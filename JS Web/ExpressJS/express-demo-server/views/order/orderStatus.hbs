@@ -1,0 +1,16 @@
+<h1>Your orders</h1>
+<div class="orders">
+    {{#if ordersArray}}
+    {{#each ordersArray}}
+        <div class="order">
+            <span class="order-time">{{this.dateOfCreation}}</span>
+            <span class="order-name">{{this.product.category}} doner, {{this.product.size}} cm</span>
+            <span class="order-status">{{this.status}}</span>
+            <a href="/orderDetails?id={{this._id}}" class="button order-button">Details</a>
+        </div>
+        {{/each}} 
+    
+    {{else}} 
+        <h1>No Orders</h1>
+    {{/if}}
+</div>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Doner Place</title>
+    <link href="/css/site.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+
+        <header>
+            {{#if currentUser}}
+            <span class="logo">Doner Place</span>
+
+            <span class="greeting">Welcome, {{currentUser.username}}! |
+                <form id="logout-form" action="/logout" method="post"></form>
+                <a href="javascript:document.getElementById('logout-form').submit()">Logout</a>
+            </span>
+            <ul class="menu">
+                <li>
+                    <a class="button" href="/">Home</a>
+                </li>
+                {{#if currentUser.isAdmin}}
+                <li>
+                    <a class="button" href="/allOrders">All orders</a>
+                </li>
+                {{else}}
+
+                <li>
+                    <a class="button" href="/orderStatus?id={{currentUser._id}}">Order Status</a>
+                </li>
+            {{/if}}
+
+            </ul>
+
+            {{else}}
+            <span class="logo">Doner Place</span>
+
+
+            <ul class="menu">
+                <li>
+                    <a class="button" href="/">Home</a>
+                </li>
+
+                <li>
+                    <a class="button" href="/login">Login</a>
+                </li>
+                <li>
+                    <a class="button" href="/register">Register</a>
+                </li>
+
+            </ul>
+            {{/if}}
+        </header>
+        <main>
+            {{#if successMessage}}
+            <span>{{successMessage}}</span> {{/if}} {{#if globalError}}
+            <span>{{globalError}}</span> {{/if}} {{{body}}}
+        </main>
+    </div>
+</body>
+
+</html>

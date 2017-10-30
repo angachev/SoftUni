@@ -1,0 +1,33 @@
+
+<div class="container">
+    <form action="/addMeme" enctype="multipart/form-data" method="POST">
+        <label for="memeName">Title</label>
+        <input type="text" id="memeName" name="memeName" placeholder="The title of the movie">
+
+        <select name="genreSelect" id="genreSelect">
+
+                {{#each tags}}
+                    <option value="{{this}}">{{this.genreName}}</option>
+                {{/each}}
+
+
+                <option value="RickAndMorty">RickAndMorty</option><option value="NotRickAndMorty">NotRickAndMorty</option>
+            </select>
+
+
+        <label for="moviePoster">Poster URL</label>
+        <input type="file" id="moviePoster" name="meme" placeholder="Link to a poster">
+
+        <input type="checkbox" name="status" id="status" checked=""> public
+
+        <label for="movieDescription">Movie description</label>
+        <textarea id="movieDescription" name="memeDescription" placeholder="Movie description" rows="10" cols="10"></textarea>
+
+        <input type="submit" value="Submit">
+
+    </form>
+</div>
+
+{{#if status}}
+<div id="successfulBox"><h2 id="successfulMsg">Meme Added</h2></div>
+{{/if}}

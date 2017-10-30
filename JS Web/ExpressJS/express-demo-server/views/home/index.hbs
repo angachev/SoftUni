@@ -1,0 +1,76 @@
+{{#if currentUser.isAdmin}}
+<h2>Admin</h2>
+<div class="product-card">
+    <img src="static/img/new.png">
+    <a href="/createProduct" class="button product-title">Create Product</a>
+</div>
+{{/if}}
+
+
+
+
+
+<main>
+    <h1>Welcome to Doner Place!</h1>
+    <p>We offer a wide variety of tasty doner kebab, cutosmized to your liking. Choose from different sizes of chicken, beef
+        and lamb and any topping you want. Place your order now!</p>
+    <div class="products">
+        <h2>Chicken Doner</h2>
+        {{#if currentUser}} {{#each foundChicken}}
+        <div class="product-card">
+            <img src={{this.imageUrl}}>
+
+            <a href="/customizeOrder?id={{this._id}}" class="button product-title">Order</a>
+            
+        </div>
+        {{/each}}
+
+        <h2>Beef Doner</h2>
+        {{#each foundBeef}}
+        <div class="product-card">
+            <img src={{this.imageUrl}}>
+            <a href="/customizeOrder?id={{this._id}}" class="button product-title">Order</a>
+           
+        </div>
+        {{/each}}
+        <h2>Lamb Doner</h2>
+        {{#each foundLamb}}
+        <div class="product-card">
+            <img src={{this.imageUrl}}>
+
+            <a href="/customizeOrder?id={{this._id}}" class="button product-title">Order</a>
+
+           
+        </div>
+        {{/each}} 
+        {{else}} 
+        {{#each foundChicken}}
+            <div class="product-card">
+                <img src={{this.imageUrl}}>
+                
+                    
+                    <a href="/login" class="button product-title">Order</a>
+            </div>
+        {{/each}}
+        
+        <h2>Beef Doner</h2>
+        {{#each foundBeef}}
+            <div class="product-card">
+                <img src={{this.imageUrl}}>
+                    
+                    <a href="/login" class="button product-title">Order</a>
+            </div>
+        {{/each}}
+        <h2>Lamb Doner</h2>
+        {{#each foundLamb}}
+            <div class="product-card">
+                <img src={{this.imageUrl}}>
+
+                  
+
+                    <a href="/login" class="button product-title">Order</a>
+            </div>
+        {{/each}}
+        {{/if}} 
+    </div>
+</main>
